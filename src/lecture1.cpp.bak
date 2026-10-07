@@ -1,0 +1,40 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <utility>
+
+using namespace std;
+
+template <typename T1, typename T2>
+struct MyPair {
+	T1 first;
+	T2 second;
+};
+
+struct Student {
+	string name;
+	double grade;
+	void print(struct Student*);
+};
+
+void print_student(struct Student *student) {
+	cout << student->name << '\t' << student->grade;
+}
+
+int main() {
+	struct Student a;
+	a.name = "a";
+	a.grade = 1.1;
+	
+	vector<struct Student> students = {
+		a,
+		{name: "b", grade: 2.2},
+		{"c", 3.3},
+	};
+
+	sort(students.begin(), students.end(), [](const auto& a, const auto& b) {
+		return a.grade > b.grade;
+	});
+	for (const auto& s : students)
+		cout << s.name << '\t' << s.grade << endl;
+}
