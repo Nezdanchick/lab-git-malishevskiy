@@ -12,6 +12,11 @@ Warrior::Warrior()
     armor = 15;
 }
 
+Weapon *Warrior::GetWeapon()
+{
+    return &weapon;
+}
+
 void Warrior::LevelRecalulate()
 {
     damageMultiplyer += 0.1 + strength * 0.01;

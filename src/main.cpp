@@ -6,6 +6,7 @@
 #include "mage.hpp"
 #include "paladin.hpp"
 #include "evil.hpp"
+#include "playerType.hpp"
 
 using namespace std;
 
@@ -17,18 +18,18 @@ int main()
 
     cout << "Присядь путник у костра и расскажи, кто ты: " << endl;
     cout << "\t1 - воин\n\t2 - волшебник\n\t3 - паладин" << endl;
-    short choise = 0;
-    cin >> choise;
+    PlayerType choise = PlayerType::None;
+    cin >> (int&)choise;
 
     switch (choise)
     {
-    case 1:
+    case PlayerType::Warrior:
         player.Create(make_unique<Warrior>());
         break;
-    case 2:
+    case PlayerType::Mage:
         player.Create(make_unique<Mage>());
         break;
-    case 3:
+    case PlayerType::Paladin:
         player.Create(make_unique<Paladin>());
         break;
     default:
@@ -37,6 +38,22 @@ int main()
     }
 
     player.GetInfo();
+
+    switch (choise)
+    {
+    case PlayerType::Warrior:
+        dynamic_cast<Warrior*>(player.GetCharacter())->GetWeapon()->Upgrade();
+        break;
+    case PlayerType::Mage:
+        dynamic_cast<Mage*>(player.GetCharacter())->GetSpell()->Upgrade();
+        break;
+    case PlayerType::Paladin:
+        dynamic_cast<Paladin*>(player.GetCharacter())->GetWeapon()->Upgrade();
+        dynamic_cast<Paladin*>(player.GetCharacter())->GetSpell()->Upgrade();
+        break;
+    default:
+        break;
+    }
 
     return 0;
 }

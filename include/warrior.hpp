@@ -11,6 +11,7 @@ private:
 
 public:
     Warrior();
+    Weapon *GetWeapon();
     void LevelRecalulate() override;
     void GetInfo() override;
     void LevelUp() override;

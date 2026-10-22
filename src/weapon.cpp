@@ -1,5 +1,6 @@
 #include "weapon.hpp"
 #include "entity.hpp"
+
 #include <iostream>
 
 using namespace std;
@@ -11,7 +12,7 @@ Weapon::Weapon(string name)
 
 void Weapon::GetInfo()
 {
-    cout << "Оружие " << name << " качества " << quality << " с уроном " << damage << endl;
+    cout << "Оружие " << name << " качества " << QualityToString(quality) << " с уроном " << damage << endl;
 }
 
 unsigned int Weapon::GetDamage()
@@ -33,9 +34,9 @@ void Weapon::Damage(Entity *from, Entity *target)
 
 void Weapon::Upgrade()
 {
-    cout << "Снаряжение " << name << " улучшено! " << quality << " -> " << quality + 1 << endl;
-    if (quality < Legendary)
+    if (quality < Quality::Legendary)
     {
-        quality = static_cast<Quality>(quality + 1);
+        cout << "Снаряжение " << name << " улучшено! " << QualityToString(quality) << " -> " << QualityToString((int)quality + 1) << endl;
+        quality = static_cast<Quality>((int)quality + 1);
     }
 }

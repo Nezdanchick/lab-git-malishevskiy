@@ -11,6 +11,7 @@ private:
 
 public:
     Mage();
+    Spell *GetSpell();
     void LevelRecalulate() override;
     void GetInfo() override;
     void LevelUp() override;

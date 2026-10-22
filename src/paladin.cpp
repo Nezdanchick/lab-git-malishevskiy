@@ -12,6 +12,16 @@ Paladin::Paladin()
     armor = 18;
 }
 
+Weapon *Paladin::GetWeapon()
+{
+    return &weapon;
+}
+
+Spell *Paladin::GetSpell()
+{
+    return &spell;
+}
+
 void Paladin::LevelRecalulate()
 {
     damageMultiplyer += 0.1 + (strength * 0.01) + (intellect * 0.01);

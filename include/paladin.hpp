@@ -14,6 +14,8 @@ private:
 
 public:
     Paladin();
+    Weapon *GetWeapon();
+    Spell *GetSpell();
     void LevelRecalulate() override;
     void GetInfo() override;
     void LevelUp() override;

@@ -12,6 +12,11 @@ Mage::Mage()
     armor = 10;
 }
 
+Spell *Mage::GetSpell()
+{
+    return &spell;
+}
+
 void Mage::LevelRecalulate()
 {
     damageMultiplyer += 0.1 + intellect * 0.02;

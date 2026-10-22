@@ -10,7 +10,7 @@ class Weapon
 protected:
     std::string name;
     unsigned int damage{1};
-    Quality quality{Common};
+    Quality quality{Quality::Common};
 
 public:
     Weapon(std::string name = "weapon");
