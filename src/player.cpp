@@ -2,20 +2,6 @@
 
 using namespace std;
 
-void Player::Create(unique_ptr<Entity> ch)
-{
-    character = move(ch);
-    if (character)
-    {
-        character->SetNameConsole();
-    }
-}
-
-Entity *Player::GetCharacter()
-{
-    return character.get();
-}
-
 void Player::GetInfo()
 {
     if (character)

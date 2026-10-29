@@ -11,8 +11,22 @@ private:
 public:
     Player() = default;
 
-    void Create(std::unique_ptr<Entity> ch);
-    Entity *GetCharacter();
+    template <typename T>
+    void Create()
+    {
+        character = std::make_unique<T>();
+        if (character)
+        {
+            character->SetNameConsole();
+        }
+    }
+
+    template <typename T>
+    T* GetCharacter()
+    {
+        return dynamic_cast<T*>(character.get());
+    }
+
     void GetInfo();
     void LevelUp();
     void Damage(float dmg);
